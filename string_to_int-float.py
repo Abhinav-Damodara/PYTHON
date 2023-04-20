@@ -1,0 +1,9 @@
+a='2134'
+print(a)
+print(type(a))
+b=int(a)
+print(b)
+print(type(b))
+b=float(a)
+print(b)
+print(type(b))

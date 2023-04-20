@@ -1,4 +1,3 @@
-from turtle import width
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -15,12 +14,10 @@ dic = {
 
 data = pd.read_csv("data//Salary_Data.csv")
 
-st.dataframe(dic)
-st.dataframe(data,width=500)
-st.table(data)
+st.dataframe(data,width=500,height= 500)
+st.table(dic)
 st.json(dic)
-st.write(data)
-st.write(a)
+st.write(dic)
 
 @st.cache
 def ret_time(a):
