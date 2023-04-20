@@ -1,0 +1,53 @@
+#include<stdio.h>
+
+#include<stdlib.h>
+
+struct Node {
+  int key;
+  struct Node * next;
+};
+void likedlist(struct Node * Mainhead) {
+  struct Node * ptr = Mainhead;
+  do {
+    printf("Element is %d\n", ptr -> key);
+    ptr = ptr -> next;
+  } while (ptr != Mainhead);
+}
+struct Node * insertfirst(struct Node * Mainhead, int key) {
+  struct Node * ptr = (struct Node * ) malloc(sizeof(struct Node));
+  ptr -> key = key;
+  struct Node * p = Mainhead -> next;
+  while (p -> next != Mainhead) {
+    p = p -> next;
+  }
+  p -> next = ptr;
+  ptr -> next = Mainhead;
+  Mainhead = ptr;
+  return Mainhead;
+}
+int main() {
+  struct Node * Mainhead;
+  struct Node * two;
+  struct Node * three;
+  struct Node * four;
+  Mainhead = (struct Node * ) malloc(sizeof(struct Node));
+  two = (struct Node * ) malloc(sizeof(struct Node));
+  three = (struct Node * ) malloc(sizeof(struct Node));
+  four = (struct Node * ) malloc(sizeof(struct Node));
+  Mainhead -> key = 8;
+  Mainhead -> next = two;
+  two -> key = 1;
+  two -> next = three;
+  three -> key = 4;
+  three -> next = four;
+  four -> key = 7;
+  four -> next = Mainhead;
+  printf("before insertion\n");
+  likedlist(Mainhead);
+  Mainhead = insertfirst(Mainhead, 35);
+  Mainhead = insertfirst(Mainhead, 41);
+  Mainhead = insertfirst(Mainhead, 96);
+  printf("after insertion\n");
+  likedlist(Mainhead);
+  return 0;
+}

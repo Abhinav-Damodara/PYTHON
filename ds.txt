@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.forward = None
+        self.backward = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, key):
+        if self.head is None:
+            new_node = Node(key)
+            new_node.backward = None
+            self.head = new_node
+        else:
+            new_node = Node(key)
+            cur = self.head
+            while cur.forward:
+                cur = cur.forward
+            cur.forward = new_node
+            new_node.backward = cur
+            new_node.forward = None
+
+    def prepend(self, key):
+        if self.head is None:
+            new_node = Node(key)
+            new_node.backward = None
+            self.head = new_node
+        else:
+            new_node = Node(key)
+            self.head.backward = new_node
+            new_node.forward = self.head
+            self.head = new_node
+            new_node.backward = None
+
+    def print_list(self):
+        cur = self.head
+        while cur:
+            print(cur.key)
+            cur = cur.forward
+
+double = DoublyLinkedList()
+double.prepend(0)
+double.append(32)
+double.append(15)
+double.append(65)
+double.append(42)
+double.prepend(18)
+
+double.print_list()
